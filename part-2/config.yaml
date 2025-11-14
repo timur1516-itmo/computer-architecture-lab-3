@@ -5,6 +5,10 @@ input_streams:
   0x80: [1]
   0x84: []
 reports:
+  - name: Log
+    slice: all
+    view: |
+      {pc}:	{instruction}	{pc:label}
   - name: Result
     slice: last
     filter:

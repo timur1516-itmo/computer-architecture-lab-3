@@ -1,0 +1,21 @@
+name: reverse_string_cstr_acc32
+limit: 1000
+memory_size: 0x1000
+input_streams:
+  0x80: [104, 101, 108, 108, 111, 10]
+  0x84: []
+reports:
+  - name: Check results
+    slice: last
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      symio[0x80]: {io:0x80:sym}
+      symio[0x84]: {io:0x84:sym}
+      {memory:0:31}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [111,108,108,101,104]
+      symio[0x80]: "" >>> ""
+      symio[0x84]: "" >>> "olleh"
+      mem[0..31]: 	05 6f 6c 6c 65 68 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f

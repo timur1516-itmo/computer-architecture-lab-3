@@ -1,0 +1,17 @@
+name: leading-zeros
+limit: 10000
+memory_size: 0x1000
+input_streams:
+  0x80: [300]
+  0x84: []
+reports:
+  - name: Result
+    slice: last
+    filter:
+      - state
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [31375]

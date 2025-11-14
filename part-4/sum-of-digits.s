@@ -8,6 +8,7 @@ output_addr:     .word  0x84
     .org        0x100
 
 _start:
+    move.l D0, 10(A0)
     movea.l     stack_top, A7                       ; Инициализация указателя стека
     movea.l     (A7), A7
     movea.l     input_addr, A0                      ; Загрузка адреса входных данных
